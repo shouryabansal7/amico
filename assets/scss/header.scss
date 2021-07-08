@@ -1,0 +1,31 @@
+header {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    div {
+        h1 {
+            color: white;
+            margin: 1rem;
+        }
+        ul {
+            list-style-type: none;
+            margin: 2rem;
+            li {
+                display: inline; 
+                margin: 1rem;
+                color: blueviolet;
+                padding: 0.7rem;
+                a {
+                    color: blueviolet;
+                    text-decoration: none;
+                }
+                background-color: white;
+                border-radius: 2rem;
+                &:hover{
+                    background-color: black;
+                }
+            }
+        }
+    }
+}
