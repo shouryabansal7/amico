@@ -14,8 +14,24 @@ module.exports.home = function(req,res){
     });*/
 
     //to display posts along wiht the user's name who made the post
-    Post.find({}).populate('user').exec(function(err,posts){
+    /*Post.find({}).populate('user').exec(function(err,posts){
             return res.render('home',{
+            title: 'Amico | Home',
+            posts: posts
+        });
+    });*/
+
+    //to display posts and comments
+    Post.find({})
+    .populate('user')
+    .populate({
+        path : 'comments',
+        populate : {
+            path : 'user'
+        }
+    })
+    .exec(function(err,posts){
+        return res.render('home',{
             title: 'Amico | Home',
             posts: posts
         });
