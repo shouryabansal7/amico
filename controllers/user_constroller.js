@@ -1,4 +1,7 @@
 const User = require('../models/users');
+const fs = require('fs');
+const path = require('path');
+
 module.exports.profile = async function(req,res){
     try{
         let user = await User.findById(req.params.id);
@@ -87,6 +90,12 @@ module.exports.update = async function(req,res){
                 user.email = req.body.email;
 
                 if(req.file){
+                    //check if there is already a path user.avatar for the profile picture present before updating the pic
+                    //also check if a picture is present at that path
+                    //if yes then remove that path form database
+                    if(user.avatar && fs.existsSync(path.join(__dirname,'..',user.avatar))){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
                     //saving the path of the uploaded file into the avatar field in the user database
                     user.avatar = User.avatarPath+'/'+req.file.filename; 
                 }
