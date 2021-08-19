@@ -24,15 +24,20 @@ module.exports.home = async function(req,res){
 
     //to display posts and comments
     try{
+        //for post
         let posts = await Post.find({})
         .sort('-createdAt')
         .populate('user')
         .populate({
+            //for comment
             path : 'comments',
             populate : {
                 path : 'user'
+            },
+            populate:{
+                path: 'likes'
             }
-        });
+        }).populate('likes');
 
         let users = await User.find({});
 

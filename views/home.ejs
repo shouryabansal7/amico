@@ -28,3 +28,11 @@
     <% } %>
 </section>
 <script src="/js/home_posts.js"></script>
+<!-- import the script file for toggle like and also run it over of the already presnet posts and comments on the page-->
+<script src="/js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>

@@ -16,6 +16,8 @@
                     //append to the list
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button',newPost));
+                    //add th function of the toggle like to all the new posts
+                    new ToggleLike($(' .toggle-like-button',newPost));
                 },error: function(error) {
                     console.log(error.responseText);
                 }
@@ -29,7 +31,7 @@
                     <p>
                         
                         <small>
-                            <a class="delete-post-button" href="/posts/destroy/${ post.id }">X</a>
+                            <a class="delete-post-button" href="/posts/destroy/${ post._id }">X</a>
                         </small>
                     </p>
                     <P>
@@ -38,10 +40,17 @@
                         <small>
                             ${ post.user.name }
                         </small>
+                        <br>
+                        <small>
+                            <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${ post._id }&type=Post">
+                                0 Likes
+                            </a>
+                        </small>
                     </P>
                     <div class="post-comment">
                     <form action="/comments/create" method="POST">
-                        <input type="text" name="content" placeholder="Type Comment Here..." required>                            <input type="hidden" name="post" value="<%= post._id %>">
+                        <input type="text" name="content" placeholder="Type Comment Here..." required>                            
+                        <input type="hidden" name="post" value="${ post._id }">
                         <input type="submit" value="Add Comment">
                     </form>
                     </div>
