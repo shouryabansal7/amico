@@ -1,13 +1,26 @@
 const User = require('../models/users');
 const fs = require('fs');
 const path = require('path');
+const Friendship = require('../models/friendship');
 
 module.exports.profile = async function(req,res){
     try{
         let user = await User.findById(req.params.id);
+        //checking if friendship already exists between them or not
+        let existing = await Friendship.findOne({
+            from_user: req.user._id,
+            to_user: req.params.id
+        });
+        let status;
+        if(existing){
+            status = "Remove Friend";
+        }else{
+            status = "Add Friend";
+        }
         return res.render('user_profile',{
             title : 'User Profile',
-            profile_user : user
+            profile_user : user,
+            friendStatus : status
         });
     }catch(err){
         return res.redirect('back');

@@ -15,4 +15,9 @@
     <!-- else show only the prfile info -->
     <P>Name : <%= profile_user.name %></P>
     <p>Email : <%= profile_user.email %></p>
+    <br>
+    <!--to add friend button or remove friend button depending on whether friendship exist or not-->
+    <a href="/friendships/friends/<%= profile_user.id %>" class="friend-button">
+        <button><%= friendStatus %></button>
+    </a>
 <% } %>
