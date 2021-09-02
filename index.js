@@ -10,6 +10,14 @@ const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 
+//setup chat server to be used with sockets.io
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+
+chatServer.listen(5000);
+console.log('Chat Server is listeing at port 5000');
+
+
 app.use(sassMiddleware({
     src : './assets/scss',
     dest : './assets/css',
