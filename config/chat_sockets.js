@@ -20,6 +20,12 @@ module.exports.chatSockets = function(socketServer){
         socket.on('disconnect', function(){
             console.log('socket disconnected!');
         });
+
+        // CHANGE :: detect send_message and broadcast to everyone in the room
+        socket.on('send_message', function(data){
+            io.in(data.chatroom).emit('receive_message', data);
+        });
+
     });
 
 }
