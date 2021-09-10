@@ -1,10 +1,39 @@
-<h1>
-    Sign Up
-</h1>
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="confirm password" required>
-    <input type="submit" value="Sign Up">
-</form>
+<link rel="stylesheet" href="/css/user_sign_up.css">
+<div class="container">
+    <div>
+        <h2 class="intro-text">
+            Sign Up
+        </h2>
+        <p>Stay updated with people who share your passion with you</p>
+    </div>
+    <div class="inputs">
+        <form action="/users/create" method="POST">
+            <div class="input">
+                <input type="text" name="name" required>
+                <label for="name">
+                    Name
+                </label>
+            </div>
+            <div class="input">
+                <input type="email" name="email" required>
+                <label for="email">
+                    Email
+                </label>
+            </div>
+            <div class="input">
+                <input type="password" name="password" required>
+                <label for="password">
+                    Password
+                </label>
+            </div>
+            <div class="input">
+                <input type="password" name="confirm_password" required>
+                <label for="confirm_password">
+                    Confirm Password
+                </label>
+            </div>
+            <input type="submit" value="Sign Up" class="submit-button">
+        </form> 
+    </div>
+    <p class="log-in-link">Already a member? <a href="/users/sign-in">Log In</a></p>
+</div>

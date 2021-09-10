@@ -1,8 +1,27 @@
-<h1>
-    Sign In
-</h1>
-<form action="/users/create-session" method="POST">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="submit" value="Sign In">
-</form> 
+<link rel="stylesheet" href="/css/user_sign_in.css">
+<div class="container">
+    <div>
+        <h2 class="intro-text">
+            Sign In
+        </h2>
+        <p>Stay updated with people who share your passion with you</p>
+    </div>
+    <div class="inputs">
+        <form action="/users/create-session" method="POST">
+            <div class="input">
+                <input type="email" name="email" required>
+                <label for="email">
+                    Email
+                </label>
+            </div>
+            <div class="input">
+                <input type="password" name="password" required>
+                <label for="password">
+                    Password
+                </label>
+            </div>
+            <input type="submit" value="Sign In" class="submit-button">
+        </form> 
+    </div>
+    <p class="join-link">New to Amico? <a href="/users/sign-up">Join now</a></p>
+</div>
