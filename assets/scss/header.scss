@@ -1,29 +1,41 @@
 header {
-    background-color: blueviolet;
+    margin-right: 3%;
+    margin-left: 3%;
+    height: 10%;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    border-bottom: 2px solid #0A66C3;
     div {
+        height: 100%;
         h1 {
-            color: white;
-            margin: 1rem;
+            color: #0A66C3;
+            margin: 1.5rem;
+            font-family: 'san-serif';
         }
         ul {
+            height: 100%;
             list-style-type: none;
-            margin: 2rem;
+            margin: 2rem 2rem 0 2rem;
             li {
+                height: 100%;
                 display: inline; 
-                margin: 1rem;
-                color: blueviolet;
+                margin: 1rem 1rem 0 1rem;
+                color: #0A66C3;
                 padding: 0.7rem;
                 a {
-                    color: blueviolet;
+                    color: #0A66C3;
                     text-decoration: none;
                 }
-                background-color: white;
-                border-radius: 2rem;
+                background-color: #fff;
+                border-radius: 10px;
+                transition: 0.5s;
                 &:hover{
-                    background-color: black;
+                    background-color: #0A66C3;
+                    a{
+                        color: #fff;
+                    }
                 }
             }
         }

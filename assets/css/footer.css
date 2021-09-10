@@ -1,7 +1,18 @@
 footer {
-  background-color: grey; }
-  footer h1 {
-    text-align: center;
-    color: white;
-    margin: 0;
-    padding: 1rem; }
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: #fff; }
+  footer div {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    footer div ul {
+      list-style-type: none;
+      color: #8c8c8c;
+      margin: 0;
+      padding: 1rem; }
+      footer div ul li {
+        display: inline;
+        cursor: pointer;
+        margin: 1rem; }

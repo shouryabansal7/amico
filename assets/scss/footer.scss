@@ -1,9 +1,22 @@
 footer {
-    background-color: grey;
-    h1 {
-        text-align: center;
-        color: white;
-        margin: 0;
-        padding: 1rem;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #fff;
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        ul{
+            list-style-type: none;
+            color: #8c8c8c;
+            margin: 0;
+            padding: 1rem;
+            li{
+                display: inline;
+                cursor: pointer;
+                margin: 1rem;
+            }
+        }
     }
 }
