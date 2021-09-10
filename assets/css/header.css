@@ -30,6 +30,7 @@ header {
           color: #0A66C3;
           text-decoration: none; }
         header div ul li:hover {
-          background-color: #0A66C3; }
+          background-color: #0A66C3;
+          color: #fff; }
           header div ul li:hover a {
             color: #fff; }

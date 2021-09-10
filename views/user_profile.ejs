@@ -1,23 +1,55 @@
-<h1>
-    Amico | <%= title %>
-</h1>
-
-<img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
-<% if(user.id==profile_user.id){ %>
-    <!-- if user matches then show the form-->
-    <form action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name%>" required>
-        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email%>" required>
-        <input type="file" name="avatar" placeholder="Profile Picture">
-        <input type="submit" value="update">
-    </form>
-<% }else{ %>
-    <!-- else show only the prfile info -->
-    <P>Name : <%= profile_user.name %></P>
-    <p>Email : <%= profile_user.email %></p>
-    <br>
-    <!--to add friend button or remove friend button depending on whether friendship exist or not-->
-    <a href="/friendships/friends/<%= profile_user.id %>" class="friend-button">
-        <button><%= friendStatus %></button>
-    </a>
-<% } %>
+<link rel="stylesheet" href="/css/user_profile.css">
+<div class="main">
+    <div class="container">
+        <div>
+            <h2 class="intro-text">
+                Profile
+            </h2>
+        </div>
+        <div>
+            <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>">
+        </div>
+        <div class="info">
+            <P><%= profile_user.name %></P>
+            <p><%= profile_user.email %></p>
+            <br>
+            <% if(user.id!=profile_user.id){ %>
+                <!--to add friend button or remove friend button depending on whether friendship exist or not-->
+                <a href="/friendships/friends/<%= profile_user.id %>" class="friend-button">
+                    <button class="friend-button"><%= friendStatus %></button>
+                </a>
+            <% } %>
+        </div>
+    </div>
+    <div class="update">
+        <% if(user.id==profile_user.id){ %>
+            <!-- if user matches then show the form-->
+            <div>
+                <h2 class="update-text">
+                    Update
+                </h2>
+            </div>
+            <form action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
+                <div class="input">
+                    <input type="text" name="name" value="<%= profile_user.name%>" required>
+                    <label for="name">
+                        Name
+                    </label>
+                </div>
+                <div class="input">
+                    <input type="email" name="email" value="<%= profile_user.email%>" required>
+                    <label for="email">
+                        Email
+                    </label>
+                </div>
+                <div class="input">
+                    <input type="file" name="avatar">
+                    <label for="avatar">
+                        Profile Picture
+                    </label>
+                </div>
+                <input type="submit" value="update" class="submit-button">
+            </form>
+        <% } %>
+    </div>    
+</div>
