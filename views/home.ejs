@@ -1,34 +1,40 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="/css/chat_box.css">
 <div class="home-container">
-    <h1>
-        Amico <%= title %>
-    </h1>
-    <section id="feed-posts">
-        <h4>Posts</h4>
-        <% if(locals.user){ %>
-            <form action="/posts/create" id="new-post-form" method="POST">
-                <textarea name="content" cols="30" rows="3" placeholder="Type here ..." required>
-                </textarea>
-                <input type="submit" value="Post">
-            </form>
-        <% } %>
-        <div id="posts-list-container">
-            <ul>
-                <% for(post of posts){ %>
-                    <%- include('_post'); %>
-                <%  } %>
-            </ul>
-        </div>
-    </section>
-    <section id="user-friends">
-        <h4>Friemds</h4>
-        <% for( u of all_users){ %>
-            <p>
-                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-            </p>
-        <% } %>
-    </section>
+    <div class="shortcuts">
+        <a href="#"><img src="https://img-premium.flaticon.com/png/512/542/premium/542707.png?token=exp=1631350960~hmac=fbf3fd75d750fb0d64905093105a3685">News</a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/681/681494.png">Group</a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/880/880594.png">Friends</a>
+    </div>
+    <div class="posts-container">
+        <section id="feed-posts">
+            <h4>Posts</h4>
+            <% if(locals.user){ %>
+                <form action="/posts/create" id="new-post-form" method="POST">
+                    <textarea name="content" cols="30" rows="3" placeholder="Type here ..." required>
+                    </textarea>
+                    <input type="submit" value="Post">
+                </form>
+            <% } %>
+            <div id="posts-list-container">
+                <ul>
+                    <% for(post of posts){ %>
+                        <%- include('_post'); %>
+                    <%  } %>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="friends">
+        <section id="user-friends">
+            <h4>Friends</h4>
+            <% for( u of all_users){ %>
+                <p>
+                    <a href="/users/profile/<%= u.id %>"><img src="/images/download.jpeg"><%= u.name %></a>
+                </p>
+            <% } %>
+        </section>
+    </div>
     <%- include('_chat_box') -%>
 </div>
 <script src="/js/home_posts.js"></script>
