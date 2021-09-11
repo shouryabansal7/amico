@@ -3,22 +3,26 @@
         <h1>Amico</h1>
     </div>
     <div>
-        <ul>
-            <% if(locals.user){ %>
-                <li>
-                    <%= user.name %>
-                </li>
-                <li>
-                    <a href="/users/sign-out">Sign Out</a>
-                </li>
-            <% }else{ %>
-                <li>
+        <% if(locals.user){ %>
+            <div class="header-home">
+                <div class="input">
+                    <input type="text" name="search" required>
+                    <label for="search">
+                        search
+                    </label>
+                </div>
+                <input type="submit" value="Search" class="search-button">
+                <img src="<%= user.avatar %>" alt="<%= user.name %>">
+            </div>
+        <% }else{ %>
+            <ul>
+                <li class="link"> 
                     <a href="/users/sign-in">Sign In</a>
                 </li>
-                <li>
+                <li class="link">
                     <a href="/users/sign-up">Sign Up</a>
                 </li>
-            <% } %>
-        </ul>
+            </ul>
+        <% } %>
     </div>
 </header>
