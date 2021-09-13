@@ -36,6 +36,7 @@ module.exports.Friends = async function(req, res){
             existingFriendship1.remove();
             existingFriendship2.remove();
             already = true;
+            req.flash('success','User Unfriended');
         }else{
             //if no then create friendship
             console.log("inside else");
@@ -59,6 +60,7 @@ module.exports.Friends = async function(req, res){
             user2.save();
             user2.friendships.push(newFriendship2._id);
             user2.save();
+            req.flash('success','User Friended');
         }
 
         console.log('friendship created');

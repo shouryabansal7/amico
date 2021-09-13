@@ -18,9 +18,11 @@ module.exports.create = async function(req,res){
             });
         }
 
+        req.flash('success','Post published!');
         return res.redirect('back');
     }catch(err){
         console.log('error in creating the post');
+        req.flash('error','error in creating the post')
         return res.redirect('back');
     }
 }
@@ -48,12 +50,15 @@ module.exports.destroy =  async function(req,res){
                 });
             }
 
+            req.flash('success','Post and associated comments deleted');
             return res.redirect('back');
         }else{
             console.log('post cannot be delted by you');
+            req.flash('success','Not authorised to delete the post')
             return res.redirect('back');
         }
     }catch(err){
+        req.flash('error',err);
         return res.redirect('back');
     }
     //without async await

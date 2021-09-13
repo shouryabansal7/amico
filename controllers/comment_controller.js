@@ -14,10 +14,12 @@ module.exports.create = async function(req,res){
 
             post.comments.push(comment);
             post.save();
+            req.flash('success','Comment created');
             return res.redirect('/');
         }
     }catch(err){
         console.log('error in creating a comment');
+        req.flash('error','error in creating a comment');
         return res.redirect('/');
     }
 }
@@ -33,13 +35,16 @@ module.exports.destroy =  async function(req,res){
 
             await Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
                     
+            req.flash('success','Comment deleted');
             return res.redirect('back');
 
         }else{
+            req.flash('success','Not authorised to delete comment');
             return res.redirect('back');
         }
     }catch(err){
         console.log(err);
+        req.flash('error',err);
         return;
     }
 }
