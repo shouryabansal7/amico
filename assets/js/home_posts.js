@@ -18,6 +18,15 @@
                     deletePost($(' .delete-post-button',newPost));
                     //add th function of the toggle like to all the new posts
                     new ToggleLike($(' .toggle-like-button',newPost));
+
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post published!",
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                        
+                    }).show();
                 },error: function(error) {
                     console.log(error.responseText);
                 }
@@ -71,6 +80,7 @@
                 url: $(deletelink).prop('href'),
                 success: function(data){
                     $(`post-${ data.data.post_id }`).remove();
+
                 },error: function(error){
                     console.log(error.responseText);
                 }

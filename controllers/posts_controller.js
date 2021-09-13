@@ -50,7 +50,7 @@ module.exports.destroy =  async function(req,res){
                 });
             }
 
-            req.flash('success','Post and associated comments deleted');
+            req.flash('success', 'Post and associated comments deleted!');
             return res.redirect('back');
         }else{
             console.log('post cannot be delted by you');
