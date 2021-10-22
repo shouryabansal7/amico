@@ -20,6 +20,13 @@ module.exports.createSession = async function (req, res) {
         token: jwt.sign(user.toJSON(), "amico", {
           expiresIn: "10000000",
         }),
+        data: {
+          user: {
+            name: user.name,
+            email: user.email,
+            _id: user._id,
+          },
+        },
       },
     });
   } catch (err) {
@@ -43,7 +50,11 @@ module.exports.create = async function (req, res) {
       return res.status(200).json({
         message: "Sign up successful, here is your user, keep it safe",
         data: {
-          user: user,
+          user: {
+            name: user.name,
+            email: user.email,
+            _id: user._id,
+          },
         },
       });
     } else {
