@@ -51,3 +51,29 @@ module.exports.destroy = async function (req, res) {
     });
   }
 };
+
+module.exports.create = async function (req, res) {
+  try {
+    let post = await Post.create({
+      content: req.body.content,
+      user: req.user._id,
+    });
+    post = await post
+      .populate({
+        path: "user",
+        select: { name: 1, email: 1, _id: 1 },
+      })
+      .execPopulate();
+    return res.status(200).json({
+      data: {
+        post: post,
+      },
+      message: "POST IS CREATED!",
+    });
+  } catch (err) {
+    console.log("****", err);
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+};
