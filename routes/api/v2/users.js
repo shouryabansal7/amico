@@ -9,6 +9,11 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   usersApi.profile
 );
+router.post(
+  "/edit",
+  passport.authenticate("jwt", { session: false }),
+  usersApi.edit
+);
 router.post("/create-session", usersApi.createSession);
 router.post("/create", usersApi.create);
 

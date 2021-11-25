@@ -2,6 +2,37 @@ const User = require("../../../models/users");
 
 const jwt = require("jsonwebtoken");
 
+module.exports.edit = async function (req, res) {
+  try {
+    if (req.body.password != req.body.confirm_password) {
+      return res.status(422).json({
+        message: "Passwords entered do not match",
+      });
+    }
+    let user = await User.findById(req.body.id);
+    user.name = req.body.name;
+    user.password = req.body.password;
+    return res.status(200).json({
+      message: "User Updated!!",
+      data: {
+        token: jwt.sign(user.toJSON(), "amico", {
+          expiresIn: "10000000",
+        }),
+        user: {
+          name: user.name,
+          email: user.email,
+          _id: user._id,
+        },
+      },
+    });
+  } catch (err) {
+    console.log("****", err);
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+};
+
 module.exports.profile = async function (req, res) {
   try {
     let user = await User.findById(req.params.id);
