@@ -2,6 +2,29 @@ const User = require("../../../models/users");
 
 const jwt = require("jsonwebtoken");
 
+module.exports.profile = async function (req, res) {
+  try {
+    let user = await User.findById(req.params.id);
+
+    if (user) {
+      return res.status(200).json({
+        data: {
+          user: {
+            _id: user.id,
+            name: user.name,
+            email: user.email,
+          },
+        },
+      });
+    }
+  } catch (err) {
+    console.log("****", err);
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+};
+
 module.exports.createSession = async function (req, res) {
   try {
     let user = await User.findOne({
