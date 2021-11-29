@@ -10,4 +10,16 @@ router.get(
   friendsApi.index
 );
 
+router.post(
+  "/remove_friendship",
+  passport.authenticate("jwt", { session: false }),
+  friendsApi.remove
+);
+
+router.post(
+  "/create_friendship",
+  passport.authenticate("jwt", { session: false }),
+  friendsApi.create
+);
+
 module.exports = router;

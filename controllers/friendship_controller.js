@@ -22,16 +22,9 @@ module.exports.Friends = async function (req, res) {
     if (existingFriendship1) {
       user1.friendships.pull(existingFriendship1._id);
       user1.save();
-      user2.friendships.pull(existingFriendship1._id);
-      user2.save();
       existingFriendship1.remove();
-      already = true;
-      req.flash("success", "User Unfriended");
-    } else if (existingFriendship2) {
-      user1.friendships.pull(existingFriendship2._id);
-      user1.save();
       user2.friendships.pull(existingFriendship2._id);
-      user1.save();
+      user2.save();
       existingFriendship2.remove();
       already = true;
       req.flash("success", "User Unfriended");
@@ -41,7 +34,12 @@ module.exports.Friends = async function (req, res) {
         to_user: user1.id,
       });
 
-      user1.friendships.push(newFriendship1._id);
+      let newFriendship2 = await Friendship.create({
+        from_user: user1.id,
+        to_user: user2.id,
+      });
+
+      user1.friendships.push(newFriendship2._id);
       user1.save();
       user2.friendships.push(newFriendship1._id);
       user2.save();
