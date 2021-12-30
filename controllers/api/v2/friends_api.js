@@ -3,20 +3,12 @@ const User = require("../../../models/users");
 
 module.exports.index = async function (req, res) {
   try {
-    let user = await User.findById(req.user.id);
-
-    user = await user
-      .populate({
-        path: "friendships",
-        populate: {
-          path: "to_user",
-          select: { name: 1, email: 1, _id: 1 },
-        },
-      })
-      .execPopulate();
+    let friendships = await Friendship.find({
+      from_user: req.user.id,
+    }).populate("to_user");
     return res.status(200).json({
-      message: "Friends List of user!" + req.user.id + " email - " + user.email,
-      friends: user.friendships,
+      message: "Friends List of user!" + req.user.id,
+      friends: friendships,
     });
   } catch (err) {
     console.log("****", err);
@@ -49,6 +41,7 @@ module.exports.remove = async function (req, res) {
     existingFriendship2.remove();
     return res.status(200).json({
       message: "friendship removed",
+      success: true,
     });
   } catch (err) {
     console.log("****", err);
@@ -79,6 +72,7 @@ module.exports.create = async function (req, res) {
     user2.save();
 
     return res.status(200).json({
+      success: true,
       message: `Now you are friends with ${user1.name}`,
       data: {
         friendship: {

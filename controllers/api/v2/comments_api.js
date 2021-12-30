@@ -46,6 +46,7 @@ module.exports.create = async function (req, res) {
         .execPopulate();
 
       return res.status(200).json({
+        success: true,
         data: {
           comment: comment,
         },

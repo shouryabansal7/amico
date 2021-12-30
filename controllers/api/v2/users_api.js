@@ -12,7 +12,9 @@ module.exports.edit = async function (req, res) {
     let user = await User.findById(req.body.id);
     user.name = req.body.name;
     user.password = req.body.password;
+    await user.save();
     return res.status(200).json({
+      success: true,
       message: "User Updated!!",
       data: {
         token: jwt.sign(user.toJSON(), "amico", {
@@ -39,6 +41,8 @@ module.exports.profile = async function (req, res) {
 
     if (user) {
       return res.status(200).json({
+        message: "Found the User",
+        success: true,
         data: {
           user: {
             _id: user.id,
@@ -70,17 +74,16 @@ module.exports.createSession = async function (req, res) {
 
     return res.status(200).json({
       message: "Sign in successful, here is your token, keep it safe",
+      success: true,
       data: {
+        user: {
+          name: user.name,
+          email: user.email,
+          _id: user._id,
+        },
         token: jwt.sign(user.toJSON(), "amico", {
           expiresIn: "10000000",
         }),
-        data: {
-          user: {
-            name: user.name,
-            email: user.email,
-            _id: user._id,
-          },
-        },
       },
     });
   } catch (err) {
@@ -102,6 +105,7 @@ module.exports.create = async function (req, res) {
     if (!user) {
       user = User.create(req.body);
       return res.status(200).json({
+        success: true,
         message: "Sign up successful, here is your user, keep it safe",
         data: {
           user: {

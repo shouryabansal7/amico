@@ -36,6 +36,8 @@ module.exports.toggle = async function (req, res) {
       );
     }
 
+    let likeId;
+
     let existingLike = await Like.findOne({
       likeable: req.query.likeable_id,
       onModel: req.query.likeable_type,
@@ -47,6 +49,7 @@ module.exports.toggle = async function (req, res) {
       likeable.save();
       existingLike.remove();
       deleted = true;
+      likeId = existingLike._id;
     } else {
       //else make a new like
       let newLike = await Like.create({
@@ -57,12 +60,15 @@ module.exports.toggle = async function (req, res) {
 
       likeable.likes.push(newLike._id);
       likeable.save();
+      likeId = newLike._id;
     }
 
     return res.status(200).json({
+      success: true,
       message: "Request successful",
       data: {
         deleted: deleted,
+        likeId: likeId,
       },
     });
   } catch (err) {

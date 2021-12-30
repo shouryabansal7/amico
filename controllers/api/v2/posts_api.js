@@ -5,7 +5,10 @@ const Like = require("../../../models/like");
 module.exports.index = async function (req, res) {
   let posts = await Post.find({})
     .sort("-createdAt")
-    .populate("user")
+    .populate({
+      path: "user",
+      select: { name: 1, email: 1, _id: 1 },
+    })
     .populate({
       //for comment
       path: "comments",
@@ -19,8 +22,11 @@ module.exports.index = async function (req, res) {
     .populate("likes");
 
   return res.status(200).json({
+    success: true,
     message: "Lists of posts",
-    posts: posts,
+    data: {
+      posts: posts,
+    },
   });
 };
 
@@ -65,6 +71,7 @@ module.exports.create = async function (req, res) {
       })
       .execPopulate();
     return res.status(200).json({
+      success: true,
       data: {
         post: post,
       },
