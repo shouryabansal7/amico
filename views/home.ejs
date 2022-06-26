@@ -1,56 +1,81 @@
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/chat_box.css">
+<link rel="stylesheet" href="/css/home.css" />
+<link rel="stylesheet" href="/css/chat_box.css" />
 <div class="home-container">
-    <div class="shortcuts">
-        <a href="#"><img src="https://img-premium.flaticon.com/png/512/542/premium/542707.png?token=exp=1631350960~hmac=fbf3fd75d750fb0d64905093105a3685">News</a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/681/681494.png">Group</a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/880/880594.png">Friends</a>
-    </div>
-    <div class="posts-container">
-        <section id="feed-posts">
-            <h4>Posts</h4>
-            <% if(locals.user){ %>
-                <form action="/posts/create" id="new-post-form" method="POST">
-                    <textarea name="content" cols="30" rows="3" placeholder="Type here ..." required>
-                    </textarea>
-                    <input type="submit" value="Post">
-                </form>
-            <% } %>
-            <div id="posts-list-container">
-                <ul>
-                    <% for(post of posts){ %>
-                        <%- include('_post'); %>
-                    <%  } %>
-                </ul>
-            </div>
-        </section>
-    </div>
-    <div class="friends">
-        <section id="user-friends">
-            <h4>Friends</h4>
-            <% for( u of all_users){ %>
-                <p>
-                    <a href="/users/profile/<%= u.id %>"><img src="/images/download.jpeg"><%= u.name %></a>
-                </p>
-            <% } %>
-        </section>
-    </div>
-    <%- include('_chat_box') -%>
+  <div class="shortcuts">
+    <a href="#"
+      ><i class="fa-solid fa-newspaper"></i>
+      <p>News</p></a
+    >
+    <a href="#"
+      ><i class="fa-solid fa-people-group"></i>
+      <p>Groups</p></a
+    >
+    <a href="#"
+      ><i class="fa-solid fa-user-group"></i>
+      <p>Friends</p></a
+    >
+    <a href="#"
+      ><i class="fa-solid fa-shop"></i>
+      <p>MarketPlace</p></a
+    >
+    <a href="#"
+      ><i class="fa-solid fa-tv"></i>
+      <p>Watch</p></a
+    >
+  </div>
+  <div class="posts-container">
+    <section id="feed-posts">
+      <h4>Posts</h4>
+      <% if(locals.user){ %>
+      <form action="/posts/create" id="new-post-form" method="POST">
+        <textarea
+          name="content"
+          cols="30"
+          rows="3"
+          placeholder="Type here ..."
+          required
+        >
+        </textarea>
+        <input type="submit" value="Post" />
+      </form>
+      <% } %>
+      <div id="posts-list-container">
+        <ul>
+          <% for(post of posts){ %> <%- include('_post'); %> <% } %>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div class="friends">
+    <h4>Friends</h4>
+    <section id="user-friends">
+      <% for( u of all_users){ %>
+      <p>
+        <a href="/users/profile/<%= u.id %>"
+          ><img
+            src="https://avatars.dicebear.com/api/big-ears/:07809000.svg"
+          /><%= u.name %></a
+        >
+      </p>
+      <% } %>
+    </section>
+  </div>
+  <%- include('_chat_box') -%>
 </div>
-<script src="/js/home_post_comment.js" ></script>
+<script src="/js/home_post_comment.js"></script>
 <script src="/js/home_posts.js"></script>
 <!-- import the script file for toggle like and also run it over of the already presnet posts and comments on the page-->
 <script src="/js/toggle_likes.js"></script>
 <script>
-    $('.toggle-like-button').each(function(){
-        let self = this;
-        let toggleLike = new ToggleLike(self);
-    });
+  $(".toggle-like-button").each(function () {
+    let self = this;
+    let toggleLike = new ToggleLike(self);
+  });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
 <script src="/js/chat_engine.js"></script>
 <% if(locals.user){ %>
-    <script>
-        new ChatEngine('user-chat-box', '<%= locals.user.email %>')
-    </script>
+<script>
+  new ChatEngine("user-chat-box", "<%= locals.user.email %>");
+</script>
 <% } %>

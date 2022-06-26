@@ -8,70 +8,86 @@
   width: 300px;
   background: white;
   padding: 5px;
-  box-shadow: 1px 1px 1px 1px lightgrey; }
-  #user-chat-box #chat-messages-list {
-    list-style: none;
-    padding: 10px;
-    height: 70%;
-    background-color: white;
-    overflow: auto; }
-    #user-chat-box #chat-messages-list .other-message {
-      text-align: left;
-      padding: 5px; }
-      #user-chat-box #chat-messages-list .other-message span {
-        display: inline-block;
-        padding: 15px;
-        background-color: lightgray;
-        border-radius: 15px; }
-    #user-chat-box #chat-messages-list .self-message {
-      text-align: right;
-      padding: 5px; }
-      #user-chat-box #chat-messages-list .self-message span {
-        display: inline-block;
-        padding: 15px;
-        background-color: lightskyblue;
-        border-radius: 15px; }
-  #user-chat-box #chat-message-input-container {
-    height: 27%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; }
-    #user-chat-box #chat-message-input-container .input {
-      position: relative;
-      width: 70%;
-      height: 50px;
-      margin-bottom: .7rem; }
-      #user-chat-box #chat-message-input-container .input input {
-        width: 100%;
-        height: 50px;
-        padding-top: 1.1rem;
-        padding-left: 9px;
-        outline: none;
-        border: 1px solid #8c8c8c;
-        border-radius: 3px;
-        transition: .2s; }
-      #user-chat-box #chat-message-input-container .input label {
-        position: absolute;
-        top: 30%;
-        left: 10px;
-        font-size: 1.1rem;
-        color: #8c8c8c;
-        transition: .2s; }
-      #user-chat-box #chat-message-input-container .input input:focus ~ label, #user-chat-box #chat-message-input-container .input .input input:valid ~ label {
-        top: 10%;
-        font-size: .8rem;
-        color: #000; }
-      #user-chat-box #chat-message-input-container .input input:focus {
-        border-width: 2px;
-        border-color: #0A66C3; }
-    #user-chat-box #chat-message-input-container #send-message {
-      height: 50%;
-      width: 27%;
-      font-size: 25px;
-      color: white;
-      border: none;
-      background: lightgrey;
-      border-radius: 10px; }
-      #user-chat-box #chat-message-input-container #send-message:hover {
-        background: lightskyblue; }
+  box-shadow: 1px 3px 3px 2px lightgrey;
+  border-radius: 20px;
+}
+#user-chat-box #chat-messages-list {
+  list-style: none;
+  padding: 10px;
+  height: 70%;
+  background-color: white;
+  overflow: auto;
+}
+#user-chat-box #chat-messages-list .other-message {
+  text-align: left;
+  padding: 5px;
+}
+#user-chat-box #chat-messages-list .other-message span {
+  display: inline-block;
+  padding: 15px;
+  background-color: lightgray;
+  border-radius: 15px;
+}
+#user-chat-box #chat-messages-list .self-message {
+  text-align: right;
+  padding: 5px;
+}
+#user-chat-box #chat-messages-list .self-message span {
+  display: inline-block;
+  padding: 15px;
+  background-color: lightskyblue;
+  border-radius: 15px;
+}
+#user-chat-box #chat-message-input-container {
+  height: 27%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#user-chat-box #chat-message-input-container .input {
+  position: relative;
+  width: 70%;
+  height: 50px;
+  margin-bottom: 0.7rem;
+}
+#user-chat-box #chat-message-input-container .input input {
+  width: 100%;
+  height: 50px;
+  padding-top: 1.1rem;
+  padding-left: 9px;
+  outline: none;
+  border: 1px solid #8c8c8c;
+  border-radius: 3px;
+  transition: 0.2s;
+}
+#user-chat-box #chat-message-input-container .input label {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+  font-size: 1.1rem;
+  color: #8c8c8c;
+  transition: 0.2s;
+}
+#user-chat-box #chat-message-input-container .input input:focus ~ label,
+#user-chat-box #chat-message-input-container .input .input input:valid ~ label {
+  top: 10%;
+  font-size: 0.8rem;
+  color: #000;
+}
+#user-chat-box #chat-message-input-container .input input:focus {
+  border-width: 2px;
+  border-color: #0a66c3;
+}
+#user-chat-box #chat-message-input-container #send-message {
+  height: 50%;
+  width: 27%;
+  font-size: 25px;
+  color: white;
+  border: none;
+  background: lightgrey;
+  border-radius: 10px;
+}
+#user-chat-box #chat-message-input-container #send-message:hover {
+  background: lightskyblue;
+}
