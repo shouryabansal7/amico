@@ -1,67 +1,79 @@
-body{
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  background-color: white;
+  .home-container {
     margin: 0;
-    padding: 0;
-    height: auto;
-    background-color: white;
-    .home-container{
-        margin: 0;
-        background-color: #fff;
-        height: 80vh;
-        width: 100%;
+    background-color: #fff;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .shortcuts {
+      margin: 1rem;
+      margin-left: 3rem;
+      width: 17%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      a {
+        padding-top: 0.3rem;
+        padding-left: 0.5rem;
+        font-size: larger;
+        text-decoration: none;
+        color: #8c8c8c;
+        font-size: 1.5rem;
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        .shortcuts{
-            margin: 1rem;
-            padding: 1rem;
-            width: 17%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            a{
-                padding-top: 0.3rem;
-                padding-left: 0.5rem;
-                margin: 1rem;
-                font-size: larger;
-                text-decoration: none;
-                color: #8c8c8c;
-                font-size: 1.5rem;
-                img{
-                    margin-right: 1rem;
-                    height: 1.5rem;
-                    background-image: #8c8c8c;
-                }
-            }
+        margin-top: 1rem;
+        i {
+          margin-right: 1rem;
+          height: 30px;
+          width: 30px;
+          background-image: #8c8c8c;
         }
-        .friends{
-            width: 17%;
-            height: 100%;
-            section{
-                width: 100%;
-                height: 100%;
-                overflow-y: scroll;
-                background: #fff;
-                h4{
-                    margin: 1rem;
-                    color: #0A66C3;
-                    font-size: 2rem;
-                }
-                p{
-                    width: 100%;
-                    font-size: 1.5rem;
-                    padding-left: 0.5rem;
-                    a{
-                        text-decoration: none;
-                        color: #8c8c8c;
-                        img{
-                            height: 2rem;
-                            border-radius: 50%;
-                            padding-top: 0.5rem;
-                        }
-                    }
-                }
-            }
+        p {
+          margin: 0;
         }
+      }
     }
+    .friends {
+      width: 20rem;
+      height: 100%;
+      h4 {
+        margin-top: 0.5rem;
+        color: #0a66c3;
+        font-size: 2rem;
+        padding-left: 20%;
+        margin-bottom: 0;
+      }
+      section {
+        width: 80%;
+        height: 100%;
+        overflow-y: scroll;
+        background: #fff;
+        p {
+          width: 100%;
+          font-size: 1.5rem;
+          padding-left: 0.5rem;
+          margin-bottom: 0;
+          a {
+            text-decoration: none;
+            color: #8c8c8c;
+            img {
+              height: 2rem;
+              border-radius: 50%;
+              padding-top: 0.5rem;
+            }
+          }
+        }
+      }
+      section::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
 }
