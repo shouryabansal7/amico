@@ -18,13 +18,7 @@ const cors = require("cors");
 const chatServer = require("http").Server(app);
 const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
 
-chatServer.listen(5500, function (err) {
-  if (err) {
-    //console.log('error:',err);
-    console.log(`Error: ${err}`);
-  }
-  console.log("Chat Server is listeing at port 5500");
-});
+chatServer.listen(5500);
 
 app.use(
   sassMiddleware({
