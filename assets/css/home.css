@@ -36,6 +36,43 @@ body {
           background-image: #8c8c8c; }
         body .home-container .shortcuts a p {
           margin: 0; }
+    body .home-container .posts-container {
+      flex: 1;
+      height: 100%;
+      background-color: white;
+      overflow-y: scroll; }
+      body .home-container .posts-container h4 {
+        margin-top: 0.5rem;
+        text-align: center;
+        color: #0a66c3;
+        font-size: 2rem;
+        margin-bottom: 2rem; }
+      body .home-container .posts-container #new-post-form {
+        display: flex;
+        flex: 1;
+        justify-content: center; }
+        body .home-container .posts-container #new-post-form textarea {
+          border-radius: 10px;
+          background-color: lightgrey;
+          height: 3rem;
+          flex-grow: 0.7;
+          margin-right: 2rem;
+          overflow-y: scroll;
+          font-family: "Times New Roman", Times, serif;
+          padding-top: 0.5rem; }
+        body .home-container .posts-container #new-post-form input {
+          background-color: #0a66c3;
+          color: #fff;
+          outline: none;
+          border-radius: 10px;
+          width: 10%;
+          border: none; }
+      body .home-container .posts-container ul {
+        margin: 2rem;
+        list-style: none;
+        padding: 2rem; }
+    body .home-container .posts-container::-webkit-scrollbar {
+      display: none; }
     body .home-container .friends {
       width: 20rem;
       height: 100%; }

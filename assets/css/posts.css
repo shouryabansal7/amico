@@ -1,0 +1,75 @@
+.posts-container ul li {
+  background-color: lightgrey;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 0.5rem;
+  margin-left: 10%;
+  width: 70%;
+}
+
+.delete-post-button {
+  border-radius: 50%;
+  background-color: white;
+  padding: 2%;
+  border: 1px black solid;
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif;
+  color: grey;
+}
+
+.del {
+  text-align: right;
+}
+
+.content {
+  font-family: "Times New Roman", Times, serif;
+  color: hsl(210, 90%, 40%);
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.name {
+  color: darkgrey;
+  font-size: 1rem;
+}
+
+.write {
+  background-color: white;
+  border-radius: 20px;
+  height: 2rem;
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  outline: none;
+  border: none;
+  width: 70%;
+  padding-left: 0.5rem;
+}
+
+.sub-com {
+  background-color: darkgrey;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  width: 28%;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.likes a {
+  font-family: "Times New Roman", Times, serif;
+  font-size: small;
+  margin-bottom: 0;
+  color: white;
+}
+
+.likes a {
+  text-decoration: none;
+}
+
+.post-comment-list-ul {
+  padding: 0 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  margin-left: 0rem !important;
+}
