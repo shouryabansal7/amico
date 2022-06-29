@@ -3,4 +3,14 @@
   font-size: 1.3rem;
   font-family: "Times New Roman", Times, serif;
   color: #0a66c3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.del-com {
+  text-align: right;
+}
+
+.delete-comment-button {
+  color: darkgray;
 }

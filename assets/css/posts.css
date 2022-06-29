@@ -8,13 +8,7 @@
 }
 
 .delete-post-button {
-  border-radius: 50%;
-  background-color: white;
-  padding: 2%;
-  border: 1px black solid;
-  text-decoration: none;
-  font-family: "Times New Roman", Times, serif;
-  color: grey;
+  color: darkgray;
 }
 
 .del {

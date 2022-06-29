@@ -2,7 +2,9 @@
   <p class="del">
     <% if(locals.user && locals.user.id==post.user.id){ %>
     <small>
-      <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
+      <a class="delete-post-button" href="/posts/destroy/<%= post.id %>"
+        ><i class="fa-solid fa-circle-minus fa-xl"></i
+      ></a>
     </small>
     <% } %>
   </p>
